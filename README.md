@@ -7,14 +7,16 @@ Taking this confluent tutorial as a basis, let's go one step further and visuali
 
 We have taken the idea and queries from the ksql tutorial using docker and modified it just a little to make it work with Instadeq. For more details about KSQL follow the Confluent's article.
 
+Requirements
+************
+
+1. Create an account in [Instadeq](https://instadeq.com) ![Instadeq](instadeq.png?raw=true "Instadeq") 
+
+2. Install docker in your computer
+
+
 Steps
-^^^^^
-
-0. Create an account in [Instadeq](https://instadeq.com) and install docker in your computer
-
-![Instadeq](instadeq.png?raw=true "Instadeq")
-
-
+*****
 
 1. Clone this tutorial repo
 
