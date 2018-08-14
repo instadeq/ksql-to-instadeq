@@ -3,11 +3,12 @@ Visualizing KSQL Streaming Queries Against Kafka Using Instadeq
 
 Taking this confluent tutorial as a basis, let's go one step further and visualize the streaming queries made with KSQL:
 
-https://docs.confluent.io/current/ksql/docs/tutorials/basics-docker.html
+[https://docs.confluent.io/current/ksql/docs/tutorials/basics-docker.html](https://docs.confluent.io/current/ksql/docs/tutorials/basics-docker.html)
 
 We have taken the idea and queries from the ksql tutorial using docker and modified it just a little to make it work with Instadeq. For more details about KSQL follow the Confluent's article.
 
-Steps:
+Steps
+^^^^^
 
 0. Create an account in [Instadeq](https://instadeq.com) and install docker in your computer
 
