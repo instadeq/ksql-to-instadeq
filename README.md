@@ -14,6 +14,21 @@ Requirements
 
 2. Install docker in your computer
 
+3. Install python libraries: requests and kafka-python
+
+```
+pip install kafka-python
+
+pip install requests
+```
+
+4.  You might also need to append kafka to your /etc/hosts file so the script python can solve the Kafka Docker address:
+
+```
+vim /etc/hosts
+
+127.0.0.1 kafka
+```
 
 Steps
 *****
@@ -36,23 +51,6 @@ sudo docker-compose up
 
 3. Start python data generator. It will publish msgs like *{"username": "javier", "val": 50}* in a topic called 'users'.
 
-You might need to install kafka-python first.
-
-
-```
-pip install kafka-python
-```
-
-You might also need to append kafka to your /etc/hosts file so the script python can solve the Kafka Docker address:
-
-
-```
-vim /etc/hosts
-
-127.0.0.1 kafka
-```
-
-
 ```
 python datagen.py
 ```
@@ -61,7 +59,8 @@ python datagen.py
 4. From the host machine, start KSQL CLI
 
 ```
-sudo docker run --network ksqltoinstadeq_net --interactive --tty confluentinc/cp-ksql-cli:5.0.0 http://ksql-server:8088
+sudo docker run --network ksqltoinstadeq_net --interactive --tty
+    confluentinc/cp-ksql-cli:5.0.0 http://ksql-server:8088
 ```
 
 
