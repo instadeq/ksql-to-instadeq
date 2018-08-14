@@ -49,7 +49,7 @@ sudo docker-compose up
 ```
 
 
-3. Start python data generator. It will publish msgs like *{"username": "javier", "val": 50}* in a topic called 'users'.
+3. Start python data generator. It will publish msgs like *{"username": "javier", "val": 50}* in a Kafka Topic called 'users'.
 
 ```
 python datagen.py
