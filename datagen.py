@@ -1,6 +1,7 @@
 """message kafka generator"""
 from __future__ import print_function
 
+import datetime
 import os
 import sys
 import json
@@ -25,9 +26,13 @@ def main():
     try:
         producer = KafkaProducer(bootstrap_servers=kservers, value_serializer=lambda v: json.dumps(v).encode('utf-8'))
         while True:
+            date = datetime.datetime.now() + datetime.timedelta(seconds=random.randint(0, 60 * 60 * 1))
+            ts = time.mktime(date.timetuple()) * 1000
             obj = {
                     'username': random.choice(['javier', 'mariano', 'andre', 'sandra', 'franco', 'laura']),
-                    'val': random.randint(0, 100)}
+                    'val': random.randint(0, 100),
+                    'ts': ts
+            }
             future = producer.send(ktopic, obj)
             result = future.get(timeout=5)
             print (obj)

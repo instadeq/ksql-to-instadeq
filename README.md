@@ -49,7 +49,7 @@ sudo docker-compose up
 ```
 
 
-3. Start python data generator. It will publish msgs like *{"username": "javier", "val": 50}* in a Kafka Topic called 'users'.
+3. Start python data generator. It will publish msgs like *{"ts": 1537153204.0, "username": "javier", "val": 50}* in a Kafka Topic called 'users'.
 
 ```
 python datagen.py
@@ -67,16 +67,14 @@ sudo docker run --network ksqltoinstadeq_net --interactive --tty
 5. Run the following queries to create streaming queries against Kafka using KSQL. Check the Confluent tutorial for more information about creating TABLES and STREAMS from Kafka Topics using KSQL.
 
 ```
-CREATE STREAM users_stream (username VARCHAR, val INT) WITH (KAFKA_TOPIC='users', VALUE_FORMAT='JSON');
+CREATE STREAM users_stream (ts VARCHAR, username VARCHAR, val INT) WITH (KAFKA_TOPIC='users', VALUE_FORMAT='JSON', TIMESTAMP='ts');
 ```
 
 ```
-CREATE TABLE total_by_username WITH (VALUE_FORMAT='json') AS
-    SELECT username, SUM(val) AS total
+CREATE TABLE total_by_username WITH (VALUE_FORMAT='json') AS SELECT username, count(*) AS total
     FROM users_stream
-    WINDOW TUMBLING (size 30 second)
+    WINDOW TUMBLING (size 10 minute)
     GROUP BY username
-    HAVING COUNT(*) > 1;
 ```
 
 
