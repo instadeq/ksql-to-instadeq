@@ -67,7 +67,7 @@ sudo docker run --network ksqltoinstadeq_net --interactive --tty
 5. Run the following queries to create streaming queries against Kafka using KSQL. Check the Confluent tutorial for more information about creating TABLES and STREAMS from Kafka Topics using KSQL.
 
 ```
-CREATE STREAM users_stream (ts VARCHAR, username VARCHAR, val INT) WITH (KAFKA_TOPIC='users', VALUE_FORMAT='JSON', TIMESTAMP='ts');
+CREATE STREAM users_stream (ts BIGINT, username VARCHAR, val INT) WITH (KAFKA_TOPIC='users', VALUE_FORMAT='JSON', TIMESTAMP='ts');
 ```
 
 ```
